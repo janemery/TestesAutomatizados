@@ -42,8 +42,16 @@ public class ExercicioJUnitTest {
 	//validando CPF invalido
 	@Test
 	public void deveriaVerificarCPFsInvalidos(){
-		Assert.assertFalse(negocio.validaCPF("00000000001"));
-		Assert.assertFalse(negocio.validaCPF("00000000002"));
+		Assert.assertFalse(negocio.validaCPF("00000000000"));
+		Assert.assertFalse(negocio.validaCPF("11111111111"));
+		Assert.assertFalse(negocio.validaCPF("22222222222"));
+		Assert.assertFalse(negocio.validaCPF("33333333333"));
+		Assert.assertFalse(negocio.validaCPF("44444444444"));
+		Assert.assertFalse(negocio.validaCPF("55555555555"));
+		Assert.assertFalse(negocio.validaCPF("66666666666"));
+		Assert.assertFalse(negocio.validaCPF("77777777777"));
+		Assert.assertFalse(negocio.validaCPF("88888888888"));
+		Assert.assertFalse(negocio.validaCPF("99999999999"));
 		Assert.assertFalse(negocio.validaCPF("0039837289"));
 	}
 	
@@ -68,5 +76,82 @@ public class ExercicioJUnitTest {
 		}		
 	}
 	
+	@Test
+	public void deveriaVerificarNomeVazio(){
+		//dada a entidade com nome vazio
+		Entidade entidade = new Entidade();
+		entidade.setNome("");
+		entidade.setNumeroDocumento(123456789L);
+		entidade.setTipoDocumento(1);
+		//quando verificar entidade valida
+		
+		try {
+			// quando ocorre uma acao
+			negocio.verificarEntidadeValida(entidade);
+
+			// deveria gerar uma validação da exceção
+			Assert.fail("Deveria verificar nome não informado");
+		} catch (Exception e) {
+		}
+	}
+	
+	@Test
+	public void deveriaVerificarNomeMuitoPequeno(){
+		//dada a entidade com nome pequeno
+			Entidade entidade = new Entidade();
+			entidade.setNome("Jane");
+			entidade.setNumeroDocumento(123456789L);
+			entidade.setTipoDocumento(1);
+			//quando verificar entidade valida
+				
+			try {
+			// quando ocorre uma acao
+			negocio.verificarEntidadeValida(entidade);
+
+			// deveria gerar uma validação da exceção
+			Assert.fail("Deveria verificar nome muito pequeno");
+			} catch (Exception e) {
+			}
+	}
+	
+	@Test
+	public void deveriaVerificarNomeMuitoGrande(){
+		//dada a entidade com nome pequeno
+			Entidade entidade = new Entidade();
+			entidade.setNome("Jane Mery Chaves Ferreira Gondim Sampaio de Alencar Furtado");
+			entidade.setNumeroDocumento(123456789L);
+			entidade.setTipoDocumento(1);
+			//quando verificar entidade valida
+				
+			try {
+			// quando ocorre uma acao
+			negocio.verificarEntidadeValida(entidade);
+
+			// deveria gerar uma validação da exceção
+			Assert.fail("Deveria verificar nome muito grande");
+			} catch (Exception e) {
+			}
+	}
+	
+	@Test
+	public void deveriaVerificarNumeroDeDocumentoValido() {
+		// dado uma condicao
+		Entidade entidade = new Entidade();
+		// nome minimo 5 caracteres
+		entidade.setNome("Jane Mery");
+		entidade.setNumeroDocumento(123456789L);
+		// tipos de documento: [1,2]
+		entidade.setTipoDocumento(1);
+
+		try {
+			// quando ocorre uma acao
+			boolean isValid = negocio.verificarEntidadeValida(entidade);
+
+			// entao espera um resultado
+			Assert.assertTrue("Deveria verificar os campos obrigatorios", isValid);
+		} catch (Exception e) {
+			Assert.fail("Erro inesperado: " + e.getMessage());
+		}		
+	}
 	
 }
