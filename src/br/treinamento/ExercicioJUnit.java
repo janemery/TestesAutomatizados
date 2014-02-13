@@ -56,7 +56,7 @@ public class ExercicioJUnit {
 	
 	private String calcDigVerif(String num) {      
         Integer primDig, segDig;      
-        int soma = 0, peso = 10;      
+        int soma = 0, peso = 10;
         for (int i = 0; i < num.length(); i++) {     
                 soma += Integer.parseInt(num.substring(i, i + 1)) * peso--;      
         }
