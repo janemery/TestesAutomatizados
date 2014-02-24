@@ -7,7 +7,9 @@ import org.dbunit.database.DatabaseConnection;
 import org.dbunit.database.IDatabaseConnection;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.xml.FlatXmlDataSetBuilder;
+import org.junit.Ignore;
 
+@Ignore
 public class EntidadeDAODBUnitTest extends DatabaseTestCase {
 	//private EntidadeDAODBUnitTest persistencia;
 	

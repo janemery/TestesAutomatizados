@@ -84,9 +84,4 @@ public class BasicoTest {
 	public void testMDC(){
 		assertEquals(negocio.mdc(1, 2, 3), 100);
 	}
-	
-	@Test(timeout = 1000)
-	public void infinito() {
-		while (true);
-	}
 }

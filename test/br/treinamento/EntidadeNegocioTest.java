@@ -42,11 +42,15 @@ public class EntidadeNegocioTest {
 		entidadeEsperada = getEntidadeValida();
 		entidadeEsperada.setId((long)1);
 		
-		EntidadeDAO persistencia = EasyMock.createMock(EntidadeDAO.class);
+		//EntidadeDAO persistencia = EasyMock.createMock(EntidadeDAO.class);
 		EasyMock.reset(persistencia);
   		EasyMock.expect(persistencia.verificarUnicidadeNome(entidadeEntrada)).andReturn(true);
   		EasyMock.expect(persistencia.salvar(entidadeEntrada)).andReturn(entidadeEsperada);
   		EasyMock.replay(persistencia);
+  		
+  		entidadeAtual = classeNegocio.salvar(entidadeEntrada);
+  		assertNotNull(entidadeAtual.getId());
+
   	}
 
   	//cenario2:Deveria validar nome não preenchido
@@ -228,6 +232,28 @@ public class EntidadeNegocioTest {
   			fail("Cenario6: Deveria Validar Data Final Menor Que Data Inicial Não Permitida. O campo Data Final não deve ser menor que a data inicial.");
   		} catch (Exception e) {
   			assertEquals("Cenario6: Deveria Validar Data Final Menor Que Data Inicial Não Permitida.", "A data final não pode ser menor que a data inicial", e.getMessage());
+  		}
+  		
+  		EasyMock.verify(persistencia);
+  	}
+  	//teste inserido depois
+  	@Test
+	public void DeveriaValidarSemDataFinalInformada() throws Exception {
+  		entidadeEntrada = getEntidadeValida();
+  		calendario = Calendar.getInstance();
+  		entidadeEntrada.setDataInicial(calendario.getTime());
+  		entidadeEntrada.setDataFinal(null);
+  		
+  		
+  		EasyMock.reset(persistencia);
+  		EasyMock.replay(persistencia);
+  		
+  		try {
+  			entidadeAtual = classeNegocio.salvar(entidadeEntrada);
+  			
+  			fail("CenarioDepois: Deveria Validar Data Final não informada. O campo Data final não pode ser nulo.");
+  		} catch (Exception e) {
+  			assertEquals("CenarioDepois: Deveria Validar Data Final não informada.", "O período deve ser informado por completo", e.getMessage());
   		}
   		
   		EasyMock.verify(persistencia);
