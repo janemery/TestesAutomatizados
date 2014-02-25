@@ -53,11 +53,17 @@ public class BasicoTest {
 	
 	@Test
 	public void testDividir() throws Exception{
-		assertEquals(((double)10 / 3), 3.33, 0.009);
+		assertEquals(negocio.dividir("10", "2"), 5, 0);
+		assertEquals(negocio.dividir("21", "7"), 3, 0);
+		assertEquals(negocio.dividir("100", "4"), 25, 0);
+		assertEquals(negocio.dividir("2", "10"), 0.2, 2);
+		assertEquals(negocio.dividir("7", "21"), 0.3, 3);
+		assertEquals(negocio.dividir("4", "100"), 0.4, 4);
+		
 	}
 	
 	@Test(expected = Exception.class)
-	public void testDividirPorZero_elegante() throws Exception{
+	public void testDividirPorZero_elegante() {
 		negocio.dividir("10", "0");
 	}
 	
@@ -65,7 +71,7 @@ public class BasicoTest {
 	public void testDividirPorZero_robusto(){
 		try{
 			assertEquals(negocio.dividir("10", "0"), 10d, 0d);
-			fail("N?o deveria chegar nesta linha");
+			fail("Não deveria chegar nesta linha");
 		} catch (Exception e) {
 			assertEquals("/ by zero", e.getMessage());
 		}
