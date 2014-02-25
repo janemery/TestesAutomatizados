@@ -85,9 +85,9 @@ public class BasicoTest {
 		assertEquals(negocio.dividir("10", "0"), 10d, 0d);
 	}
 	
-	@Ignore("N?o lembro como faz isso")
 	@Test
 	public void testMDC(){
-		assertEquals(negocio.mdc(1, 2, 3), 100);
-	}
+		assertEquals(negocio.mdc(1, 2, 3), 0);
+		assertEquals(negocio.mdc(10, 20, 30), 0);
+		}
 }
