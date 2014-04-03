@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-encoding//src/br/treinamento/EntidadeNegocio.java=UTF-8
-encoding//test/br/treinamento/BasicoTest.java=UTF-8
-encoding//test/br/treinamento/EntidadeNegocioTest.java=UTF-8
-encoding//test/br/treinamento/ExercicioJUnitTest.java=UTF-8
+encoding//src/main/java/br/treinamento/EntidadeNegocio.java=UTF-8
+encoding//src/test/java/br/treinamento/BasicoTest.java=UTF-8
+encoding//src/test/java/br/treinamento/EntidadeNegocioTest.java=UTF-8
+encoding//src/test/java/br/treinamento/ExercicioJUnitTest.java=UTF-8

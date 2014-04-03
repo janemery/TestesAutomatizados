@@ -151,7 +151,6 @@ public class EntidadeDAO implements EntidadeDAOInterface {
 		return lista;
 	}
 	
-	@Override
 	public boolean verificarUnicidadeNome(Entidade entidade) throws Exception {
 		StringBuilder builder = new StringBuilder();
 		builder.append("SELECT * FROM entidade WHERE nome like ?");
