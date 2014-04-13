@@ -8,6 +8,7 @@ import junit.framework.Assert;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -53,6 +54,7 @@ public class ExercicioJUnitTest {
 		Assert.assertFalse(negocio.validaCPF("96257426101"));
 	}
 	
+	@Ignore
 	@Test
 	public void deveriaVerificarCamposObrigatorios() {
 		// dado uma condicao
@@ -339,6 +341,7 @@ public class ExercicioJUnitTest {
 		}		
 	}
 
+	@Ignore
 	@Test
 	public void deveriaVerificarEmailComArroba() {
 		// dado uma condicao

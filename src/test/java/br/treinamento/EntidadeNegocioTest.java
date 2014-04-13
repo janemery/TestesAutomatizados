@@ -9,8 +9,10 @@ import java.util.Calendar;
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class EntidadeNegocioTest {
 
 	private EntidadeNegocio classeNegocio;
