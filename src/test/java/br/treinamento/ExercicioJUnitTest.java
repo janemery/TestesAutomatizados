@@ -57,7 +57,7 @@ public class ExercicioJUnitTest {
 	@Ignore
 	@Test
 	public void deveriaVerificarCamposObrigatorios() {
-		// dado uma condicao
+		// dado uma condicao geral
 		Entidade entidade = new Entidade();
 		// nome minimo 5 caracteres
 		entidade.setNome("Jane Mery");
